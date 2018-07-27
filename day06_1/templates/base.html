@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en"><!--<![endif]--> 
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/site.css' %}" rel="stylesheet">
+        {% block css %}{% endblock %}
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#">尚精英管理系统</a>
+						<div class="nav-collapse">
+							<ul class="nav pull-right">
+                                {% if request.user.is_authenticated %}
+                                <li>
+									<a href="#">{{ request.user.username }}</a>
+								</li>
+								<li>
+									<a href="{% url 'users:user_logout' %}">退出</a>
+								</li>
+                                {% else %}
+								<li>
+									<a href="{% url 'users:user_login' %}">登录</a>
+								</li>
+								<li>
+									<a href="{% url 'users:user_register' %}">注册</a>
+								</li>
+                                {% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<div class="well" style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header">
+								尚精英
+							</li>
+							<li {% if flag == 'list' %}class="active" {% endif %}>
+								<a href="{% url 'students:student_list' %}"><i class="icon-white icon-home"></i>查看精英</a>
+							</li>
+							<li {% if flag == 'add' %}class="active" {% endif %}>
+								<a href="{% url 'students:student_add' %}"><i class="icon-folder-open"></i>增加精英</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{% block span9 %}{% endblock %}
+			</div>
+		</div>
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/site.js' %}"></script>
+        {% block js %}{% endblock %}
+	</body>
+</html>

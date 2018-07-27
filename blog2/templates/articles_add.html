@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'articles:article_add' %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    标题：<input type="text" name="arttitle"><br>
+    简介：<input type="text" name="artdesc"><br>
+    图片：<input type="file" name="artimage"><br>
+    内容：<textarea name="artcontent" id="" cols="30" rows="10"></textarea>
+    <input type="submit"><br>
+</form>
+</body>
+</html>

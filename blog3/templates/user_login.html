@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+		<meta charset="utf-8">
+		<link href="{% static 'css/reglogin.css' %}" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="main">
+		<div class="header" >
+			<h1>登录</h1>
+		</div>
+		<p></p>
+			<form action="{% url 'users:user_login' %}" method="post">
+                {% csrf_token %}
+				<ul class="left-form">
+					<h2>登录:</h2>
+					<li>
+						<input type="text" placeholder="用户名" required name="username"/>
+						<a href="#" class="icon ticker"> </a>
+						<div class="clear"> </div>
+					</li> 
+					<li>
+						<input type="password" placeholder="密码" required name="password"/>
+						<a href="#" class="icon ticker"> </a>
+						<div class="clear"> </div>
+					</li> 
+
+					<input type="submit" value="登录">
+					<div class="clear"> </div>
+				</ul>
+				<div class="clear"> </div>
+
+			</form>
+        <div>
+            {{ msg }}
+            {% for key,err in user_login_form.errors.items %}
+            {{ err }}
+            {% endfor %}
+        </div>
+	</div>
+</body>
+</html>

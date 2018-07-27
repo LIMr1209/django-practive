@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>首页</p>
+    <a href="{% url 'girls:meinv' %}">美女</a>
+    {{ a }} <br>
+    {{ list }} <br>
+    {{ dict }} <br>
+    {% for foo in list %}
+        {{ foo }}
+    {% endfor %}
+    <br>
+    {% for key,value in dict.items %}
+        {{ key }} {{ value }}
+    {% endfor %}
+
+</body>
+</html>

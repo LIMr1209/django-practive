@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>学生姓名</th>
+            <th>学生年龄</th>
+            <th>学生性别</th>
+            <th>学生班级</th>
+            <th>学生学号</th>
+            <th>操作</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.gender }}</td>
+                <td>{{ student.stu_class.name }}</td>
+                <td>{{ student.cardid.id_number }}</td>
+                <td>
+                    <a href="{% url 'students:students_delete' student.id %}">删除</a>
+                    <a href="{% url 'students:students_update' student.id %}">修改</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{% url 'students:students_add' %}">添加</a></p>
+</body>
+</html>

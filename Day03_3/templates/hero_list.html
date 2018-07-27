@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for hero in hero_list %}
+        英雄姓名：{{ hero.byname }}
+        英雄类型：{{ hero.type }}
+        英雄价格: {{ hero.price }}  <br>
+    {% endfor %}
+</body>
+</html>

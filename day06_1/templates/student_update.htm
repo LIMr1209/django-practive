@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}精英修改{% endblock %}
+{% block span9 %}
+				<div class="span9">
+					<h1>
+						精英修改
+					</h1>
+					<form id="edit-profile" class="form-horizontal" action="{% url 'students:student_update' student.id %}" method="post">
+                    {% csrf_token %}
+						<fieldset>
+							<legend>精英信息</legend>
+							<div class="control-group">
+								<label class="control-label" for="input01">姓名</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.name }}" name="stu_name" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="input01">年龄</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.age }}" name="stu_age" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="input01">学号</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.cardid.id_number }}" name="stu_card"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">班级</label>
+								<div class="controls">
+                                    <select name="stu_class" class="input-file">
+                                    {% for ban in all_bans %}
+                                        <option {% if student.stu_ban == ban %} selected {% endif %}>{{ ban.name }}</option>
+                                    {% endfor %}
+                                    </select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">性别</label>
+								<div class="controls">
+                                    <select name="stu_gender" class="input-file">
+                                        <option {% if student.gender == 'girl' %}selected{% endif %}>girl</option>
+                                        <option {% if student.gender == 'boy' %}selected{% endif %}>boy</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">修改</button> <a href="{% url 'students:student_list' %}" class="btn">取消</a>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+{% endblock %}

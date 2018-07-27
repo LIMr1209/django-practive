@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}精英添加{% endblock %}
+{% block span9 %}
+				<div class="span9">
+					<h1>
+						精英添加
+					</h1>
+					<form id="edit-profile" class="form-horizontal" action="{% url 'students:student_add'%}" method="post">
+                    {% csrf_token %}
+						<fieldset>
+							<legend>精英信息</legend>
+							<div class="control-group">
+								<label class="control-label" for="input01">姓名</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" name="stu_name" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="input01">年龄</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" name="stu_age" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="input01">学号</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" name="stu_card"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">班级</label>
+								<div class="controls">
+                                    <select name="stu_class" class="input-file">
+                                    {% for ban in all_bans %}
+                                        <option>{{ ban.name }}</option>
+                                    {% endfor %}
+                                    </select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">性别</label>
+								<div class="controls">
+                                    <select name="stu_gender" class="input-file">
+                                        <option>girl</option>
+                                        <option>boy</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">添加</button> <a href="{% url 'students:student_list' %}" class="btn">取消</a>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+{% endblock %}

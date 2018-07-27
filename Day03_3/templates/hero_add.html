@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+select>option*3
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<input type="text">
+<form action="{% url 'lol:hero_add' %}" method="post">
+    {% csrf_token %}
+    英雄姓名：<input type="text" name="name"> <br>
+    英雄别名：<input type="text" name="byname"> <br>
+    英雄性别：<select name="gender">
+                <option selected="selected">boy</option>
+                <option>girl</option>
+             </select> <br>
+    英雄类型：<input type="text" name="type"> <br>
+    英雄价格：<input type="text" name="price"> <br>
+    <input type="submit">
+</form>
+</body>
+</html>

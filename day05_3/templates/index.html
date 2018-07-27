@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>首页</p>
+{#    <p>welcome   {{ request.COOKIES.uname }}</p>#}
+    <p>welcome   {{ request.session.uname }}</p>
+    <p><a href="{% url 'users:user_logout' %}">退出</a></p>
+    <p><a href="{% url 'users:user_register' %}">注册</a></p>
+    <p><a href="{% url 'users:user_login' %}">登录</a></p>
+</body>
+</html>

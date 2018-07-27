@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'students:student_add'%}" method="post">
+    {% csrf_token %}
+    姓名：<input type="text" name="stu_name"> <br>
+    年龄：<input type="text" name="stu_age"> <br>
+    性别：<select name="stu_gender" >
+          <option>girl</option>
+          <option>boy</option>
+        </select> <br>
+    班级：<select name="stu_class">
+        {% for ban in all_bans %}
+            <option>{{ ban.name }}</option>
+        {% endfor %}
+        </select> <br>
+    学号：<input type="text" name="stu_card"> <br>
+    <input type="submit">
+</form>
+</body>
+</html>

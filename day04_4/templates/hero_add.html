@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'lol:hero_add'%}" method="post">
+    {% csrf_token %}
+    英雄姓名：<input type="text" name="hero_name"> <br>
+    英雄别名：<input type="text" name="hero_byname"> <br>
+    英文名：<input type="text" name='hero_english_name'> <br>
+    英雄性别：<select name="hero_gender">
+        <option >boy</option>
+        <option >girl</option>
+    </select> <br>
+    所属阵营：<select name="hero_camp" >
+        {% for camp in all_camps %}
+            <option>{{ camp }}</option>
+        {% endfor %}
+    </select> <br>
+    <input type="submit">
+</form>
+</body>
+</html>

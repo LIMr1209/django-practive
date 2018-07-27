@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'users:user_login' %}" method="post">
+    {% csrf_token %}
+    用户名：<input type="text" name="username" value="{{ request.user.username }}"><br>
+    密码：<input type="password" name="password"><br>
+     记住用户名：<input type="checkbox" name="checkname">
+    <input type="submit"><br>
+</form>
+<div>
+    {{ msg }}
+</div>
+</body>
+</html>

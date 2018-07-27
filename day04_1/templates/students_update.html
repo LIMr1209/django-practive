@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'students:students_update' student.id %}" method="post">
+    {% csrf_token %}
+    姓名：<input type="text" name="stu_name" value="{{ student.name }}"><br>
+    年龄：<input type="text" name="stu_age" value="{{ student.age }}"><br>
+    性别：<select name="stu_gender">
+        <option {% if student.gender == 'girl' %} selected {% endif %}>girl</option>
+        <option {% if student.gender == 'boy' %} selected {% endif %}>boy</option>
+    </select>
+    班级：<select name="stu_class" >
+        {% for ban in all_bans %}
+            <option {% if student.stuclass == ban   %} selected {% endif %}>{{ ban.name }}</option>
+        {% endfor %}
+    </select><br>
+    学号：<input type="text" name="stu_card" value="{{ student.cardid.id_number }}"><br>
+    <input type="submit"><br>
+</form>
+</body>
+</html>
